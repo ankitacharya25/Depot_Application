@@ -25,11 +25,25 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+        format.html { 
+          redirect_to @product, 
+          notice: "Product was successfully created." 
+        }
+        format.json { 
+          render :show, 
+          status: :created, 
+          location: @product 
+        }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        puts @product.errors.full_messages
+        format.html { 
+          render :new, 
+          status: :unprocessable_entity 
+        }
+        format.json { 
+          render json: @product.errors, 
+          status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -38,11 +52,23 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
+        format.html { 
+          redirect_to @product, 
+          notice: "Product was successfully updated." 
+        }
+        format.json { 
+          render :show, status: :ok, 
+          location: @product 
+        }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { 
+          render :edit, 
+          status: :unprocessable_entity 
+        }
+        format.json { 
+          render json: @product.errors, 
+          status: :unprocessable_entity 
+        }
       end
     end
   end

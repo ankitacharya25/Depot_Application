@@ -19,13 +19,6 @@ class CartsController < ApplicationController
   def edit
   end
 
-  private
-  #
-    def invalid_cart
-      logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to store_index_url, notice: 'Invalid cart'
-    end
-
   # POST /carts or /carts.json
   def create
     @cart = Cart.new(cart_params)
@@ -75,4 +68,10 @@ class CartsController < ApplicationController
     def cart_params
       params.fetch(:cart, {})
     end
+
+  private
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    redirect_to store_index_url, notice: 'Invalid cart'
+  end
 end
